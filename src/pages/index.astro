@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
 import OffreCard from '../components/OffreCard.astro';
 ---
 
@@ -10,104 +9,91 @@ import OffreCard from '../components/OffreCard.astro';
 >
 
   <!-- ============================
-       SECTION 1 — HERO (texte gauche + visuel droite)
+       HERO — fond nuit + particules étoiles
        ============================ -->
-  <section class="relative min-h-screen flex items-center bg-white overflow-hidden">
-    <!-- Étoiles flottantes CSS -->
-    <div class="stars-container" aria-hidden="true">
-      <div class="star" style="top:10%; left:8%;  --duration:7s;  --delay:0s;"></div>
-      <div class="star" style="top:20%; left:85%; --duration:9s;  --delay:1s;"></div>
-      <div class="star" style="top:35%; left:15%; --duration:6s;  --delay:0.5s;"></div>
-      <div class="star" style="top:55%; left:90%; --duration:8s;  --delay:2s;"></div>
-      <div class="star" style="top:70%; left:5%;  --duration:10s; --delay:0.3s;"></div>
-      <div class="star" style="top:80%; left:75%; --duration:7s;  --delay:1.5s;"></div>
-      <div class="star" style="top:15%; left:50%; --duration:9s;  --delay:0.8s;"></div>
-      <div class="star" style="top:65%; left:40%; --duration:6s;  --delay:2.5s;"></div>
-      <div class="star" style="top:40%; left:70%; --duration:11s; --delay:0.2s;"></div>
-      <div class="star" style="top:88%; left:30%; --duration:8s;  --delay:1.8s;"></div>
-      <div class="star" style="top:5%;  left:35%; --duration:7s;  --delay:3s;"></div>
-      <div class="star" style="top:50%; left:55%; --duration:9s;  --delay:0.7s;"></div>
-      <div class="star" style="top:25%; left:28%; --duration:6s;  --delay:1.2s;"></div>
-      <div class="star" style="top:75%; left:60%; --duration:10s; --delay:2.2s;"></div>
-      <div class="star" style="top:92%; left:80%; --duration:8s;  --delay:0.4s;"></div>
-      <div class="star" style="top:45%; left:22%; --duration:7s;  --delay:3.5s;"></div>
-      <div class="star" style="top:30%; left:95%; --duration:9s;  --delay:1.6s;"></div>
-      <div class="star" style="top:60%; left:12%; --duration:6s;  --delay:2.8s;"></div>
-      <div class="star" style="top:82%; left:48%; --duration:11s; --delay:0.9s;"></div>
-      <div class="star" style="top:18%; left:63%; --duration:8s;  --delay:1.4s;"></div>
-    </div>
+  <section class="relative min-h-screen flex items-center overflow-hidden" style="background:#0A0F2C;">
+
+    <!-- Canvas particules étoiles -->
+    <canvas id="stars-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+
+    <!-- Halo lumineux flou derrière le texte -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl pointer-events-none" style="background:radial-gradient(circle, #42A5F5 0%, #1565C0 50%, transparent 100%);"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
         <!-- Texte gauche -->
         <div>
-          <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-8">
-            <span class="w-2 h-2 bg-gm-light rounded-full animate-pulse"></span>
-            <span class="text-gm-blue text-sm font-medium">Agence marketing digitale</span>
+          <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 border" style="background:rgba(66,165,245,0.1); border-color:rgba(66,165,245,0.3);">
+            <span class="w-2 h-2 rounded-full animate-pulse" style="background:#42A5F5;"></span>
+            <span class="text-sm font-medium" style="color:#42A5F5;">Agence marketing digitale</span>
           </div>
 
-          <h1 class="text-5xl sm:text-6xl font-extrabold text-gm-marine leading-tight mb-6">
+          <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-6 text-white">
             Votre présence digitale,<br />
-            <span class="text-gm-blue">pensée pour vous.</span>
+            <span style="color:#42A5F5;">pensée pour vous.</span>
           </h1>
 
-          <p class="text-xl text-gray-500 mb-10 font-light">
+          <p class="text-xl mb-10 font-light" style="color:rgba(255,255,255,0.6);">
             Site web · Fiche Google · Identité visuelle
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#offres" class="bg-gm-blue text-white px-8 py-4 rounded-xl font-semibold text-lg btn-transition hover:bg-gm-indigo shadow-lg shadow-blue-200 text-center">
+            <a href="#offres" class="text-white px-8 py-4 rounded-xl font-semibold text-lg btn-transition text-center" style="background:#1565C0;" onmouseover="this.style.background='#5C35B0'" onmouseout="this.style.background='#1565C0'">
               Voir nos offres
             </a>
-            <a href="/contact" class="border-2 border-gm-marine text-gm-marine px-8 py-4 rounded-xl font-semibold text-lg btn-transition hover:bg-gm-marine hover:text-white text-center">
+            <a href="/contact" class="px-8 py-4 rounded-xl font-semibold text-lg btn-transition text-center border-2 text-white" style="border-color:rgba(255,255,255,0.3);" onmouseover="this.style.borderColor='#42A5F5';this.style.color='#42A5F5'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='white'">
               Nous contacter
             </a>
           </div>
         </div>
 
-        <!-- Visuel droite — mockup dashboard -->
+        <!-- Visuel droite — mockup card -->
         <div class="relative hidden lg:block">
-          <div class="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 ml-8">
+          <div class="rounded-2xl p-6 ml-8 border" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.1); backdrop-filter:blur(12px);">
             <div class="flex items-center gap-2 mb-4">
               <div class="w-3 h-3 rounded-full bg-red-400"></div>
               <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
               <div class="w-3 h-3 rounded-full bg-green-400"></div>
-              <div class="flex-1 bg-gray-100 rounded-full h-4 ml-2"></div>
+              <div class="flex-1 rounded-full h-4 ml-2" style="background:rgba(255,255,255,0.1);"></div>
             </div>
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85"
               alt="Exemple site web professionnel"
-              class="rounded-xl w-full h-48 object-cover mb-4"
+              class="rounded-xl w-full h-48 object-cover mb-4 opacity-90"
             />
             <div class="grid grid-cols-3 gap-3">
-              <div class="bg-blue-50 rounded-xl p-3 text-center">
-                <p class="text-gm-blue font-bold text-lg">+85%</p>
-                <p class="text-gray-500 text-xs">Visibilité</p>
+              <div class="rounded-xl p-3 text-center" style="background:rgba(66,165,245,0.15);">
+                <p class="font-bold text-lg" style="color:#42A5F5;">+85%</p>
+                <p class="text-xs" style="color:rgba(255,255,255,0.5);">Visibilité</p>
               </div>
-              <div class="bg-indigo-50 rounded-xl p-3 text-center">
-                <p class="text-gm-indigo font-bold text-lg">3x</p>
-                <p class="text-gray-500 text-xs">Plus de clients</p>
+              <div class="rounded-xl p-3 text-center" style="background:rgba(92,53,176,0.2);">
+                <p class="font-bold text-lg" style="color:#a78bfa;">3x</p>
+                <p class="text-xs" style="color:rgba(255,255,255,0.5);">Plus de clients</p>
               </div>
-              <div class="bg-blue-50 rounded-xl p-3 text-center">
-                <p class="text-gm-blue font-bold text-lg">24h</p>
-                <p class="text-gray-500 text-xs">Livraison</p>
+              <div class="rounded-xl p-3 text-center" style="background:rgba(66,165,245,0.15);">
+                <p class="font-bold text-lg" style="color:#42A5F5;">Pro</p>
+                <p class="text-xs" style="color:rgba(255,255,255,0.5);">Qualité</p>
               </div>
             </div>
           </div>
-          <div class="absolute -top-4 -right-4 bg-gm-blue text-white rounded-2xl px-4 py-3 shadow-lg">
-            <p class="text-xs font-medium">Fiche Google</p>
-            <p class="text-lg font-bold">⭐ 4.9/5</p>
+
+          <!-- Badge flottant haut -->
+          <div class="absolute -top-4 -right-4 rounded-2xl px-4 py-3 shadow-lg" style="background:#1565C0;">
+            <p class="text-xs font-medium text-blue-200">Fiche Google</p>
+            <p class="text-lg font-bold text-white">⭐ 5/5</p>
           </div>
-          <div class="absolute -bottom-4 -left-4 bg-white border border-gray-100 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3">
-            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+          <!-- Badge flottant bas -->
+          <div class="absolute -bottom-4 -left-4 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-3" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(8px);">
+            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
-              <p class="text-xs text-gray-500">Site livré</p>
-              <p class="text-sm font-bold text-gm-marine">En ligne ✓</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.5);">Site livré</p>
+              <p class="text-sm font-bold text-white">En ligne ✓</p>
             </div>
           </div>
         </div>
@@ -117,171 +103,292 @@ import OffreCard from '../components/OffreCard.astro';
   </section>
 
   <!-- ============================
-       SECTION 2 — STATS / CHIFFRES CLÉS
+       PROMESSES — 4 valeurs clés
        ============================ -->
-  <section class="py-16 bg-gm-marine">
+  <section class="py-14" style="background:#1A237E;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="fade-in-up">
-          <p class="text-4xl font-extrabold text-white mb-1">
-            <span class="counter" data-target="50" data-suffix="+">50+</span>
-          </p>
-          <p class="text-blue-300 text-sm font-medium">Clients accompagnés</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+        <div class="fade-in-up flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.2);">
+            <svg class="w-6 h-6" style="color:#42A5F5;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <p class="font-bold text-white">Devis gratuit</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.5);">Sans engagement</p>
         </div>
-        <div class="fade-in-up">
-          <p class="text-4xl font-extrabold text-white mb-1">
-            <span class="counter" data-target="98" data-suffix="%">98%</span>
-          </p>
-          <p class="text-blue-300 text-sm font-medium">Clients satisfaits</p>
+
+        <div class="fade-in-up flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.2);">
+            <svg class="w-6 h-6" style="color:#42A5F5;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <p class="font-bold text-white">Réponse sous 48h</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.5);">Toujours disponible</p>
         </div>
-        <div class="fade-in-up">
-          <p class="text-4xl font-extrabold text-white mb-1">
-            <span class="counter" data-target="3" data-suffix="j">3j</span>
-          </p>
-          <p class="text-blue-300 text-sm font-medium">Délai moyen livraison</p>
+
+        <div class="fade-in-up flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.2);">
+            <svg class="w-6 h-6" style="color:#42A5F5;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <p class="font-bold text-white">Résultat professionnel</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.5);">Qualité à chaque livraison</p>
         </div>
-        <div class="fade-in-up">
-          <p class="text-4xl font-extrabold text-white mb-1">
-            <span class="counter" data-target="5" data-suffix="★">5★</span>
-          </p>
-          <p class="text-blue-300 text-sm font-medium">Note moyenne Google</p>
+
+        <div class="fade-in-up flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.2);">
+            <svg class="w-6 h-6" style="color:#42A5F5;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <p class="font-bold text-white">Suivi de A à Z</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.5);">Du brief à la livraison</p>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- ============================
-       SECTION 3 — SERVICES
-       ============================ -->
-  <section class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Nos services</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">
-          Tout ce qu'il faut pour une présence en ligne professionnelle et efficace.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <ServiceCard icon="computer" title="Site web vitrine" description="Sites vitrines modernes, responsives et optimisés pour attirer vos clients." />
-        <ServiceCard icon="location" title="Fiche Google" description="Optimisation complète de votre fiche Google Business pour être trouvé localement." />
-        <ServiceCard icon="star" title="Identité visuelle" description="Logo, carte de visite et flyer pour une image de marque professionnelle." />
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SECTION 4 — COMMENT ÇA MARCHE
+       NOS SERVICES — ce qu'on fait
        ============================ -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Comment ça marche ?</h2>
-        <p class="text-gray-500 text-lg">Un processus simple et transparent, de A à Z.</p>
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Ce qu'on fait</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Nos services</h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">Trois expertises pour couvrir l'ensemble de votre présence digitale.</p>
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center fade-in-up">
-          <div class="w-20 h-20 bg-gm-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
-            <span class="text-white text-3xl font-extrabold">1</span>
+        <!-- Service 1 -->
+        <div class="group rounded-2xl p-8 border border-gray-100 card-hover fade-in-up transition-all duration-300 hover:border-blue-200" style="background:#F8FAFF;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#1565C0;">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold text-gm-marine mb-3">Brief & découverte</h3>
-          <p class="text-gray-500 leading-relaxed text-sm">On échange sur votre projet, vos besoins et vos objectifs. Gratuit et sans engagement.</p>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Site web vitrine</h3>
+          <p class="text-gray-500 leading-relaxed mb-5">Un site moderne, responsive et optimisé pour convertir vos visiteurs en clients.</p>
+          <a href="/services" class="text-sm font-semibold inline-flex items-center gap-1 btn-transition" style="color:#1565C0;">
+            En savoir plus
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="text-center fade-in-up">
-          <div class="w-20 h-20 bg-gm-indigo rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-200">
-            <span class="text-white text-3xl font-extrabold">2</span>
+
+        <!-- Service 2 -->
+        <div class="group rounded-2xl p-8 border border-gray-100 card-hover fade-in-up transition-all duration-300 hover:border-blue-200" style="background:#F8FAFF;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#1565C0;">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold text-gm-marine mb-3">Création & validation</h3>
-          <p class="text-gray-500 leading-relaxed text-sm">On crée votre projet sur mesure. Vous validez chaque étape avec des retours illimités.</p>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Fiche Google Business</h3>
+          <p class="text-gray-500 leading-relaxed mb-5">Optimisation complète pour apparaître en tête des recherches locales et attirer plus de clients.</p>
+          <a href="/services" class="text-sm font-semibold inline-flex items-center gap-1 btn-transition" style="color:#1565C0;">
+            En savoir plus
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="text-center fade-in-up">
-          <div class="w-20 h-20 bg-gm-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
-            <span class="text-white text-3xl font-extrabold">3</span>
+
+        <!-- Service 3 -->
+        <div class="group rounded-2xl p-8 border border-gray-100 card-hover fade-in-up transition-all duration-300 hover:border-blue-200" style="background:#F8FAFF;">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#1565C0;">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
           </div>
-          <h3 class="text-xl font-bold text-gm-marine mb-3">Livraison & mise en ligne</h3>
-          <p class="text-gray-500 leading-relaxed text-sm">Votre projet est livré clé en main, mis en ligne et prêt à attirer vos clients.</p>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Identité visuelle</h3>
+          <p class="text-gray-500 leading-relaxed mb-5">Logo, palette, typographies, carte de visite et flyer — une image de marque cohérente et professionnelle.</p>
+          <a href="/services" class="text-sm font-semibold inline-flex items-center gap-1 btn-transition" style="color:#1565C0;">
+            En savoir plus
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================
-       SECTION 5 — OFFRES
+       COMMENT ÇA MARCHE — timeline humaine
        ============================ -->
-  <section id="offres" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Nos offres</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">Des formules claires et adaptées à chaque besoin et budget.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-        <OffreCard name="Essentiel" price="À partir de 250€" features={['Fiche Google optimisée + visuels','3 posts Google planifiés','Carte NFC + QR code','Guide PDF offert']} />
-        <OffreCard name="Pro" price="À partir de 900€" popular={true} features={["Tout l'Essentiel inclus",'Site web one-page professionnel','Design responsive mobile et desktop','Formulaire de contact intégré','Animations incluses']} />
-        <OffreCard name="Galaxy" price="À partir de 1 200€" features={['Tout le Pro inclus','Logo + identité visuelle complète','Carte de visite et flyer','Livraison en haute résolution']} />
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SECTION 6 — TÉMOIGNAGES
-       ============================ -->
-  <section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-24" style="background:#F8FAFF;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Ce que disent nos clients</h2>
-        <p class="text-gray-500 text-lg">Ils nous ont fait confiance, voici leur retour.</p>
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Le processus</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Comment ça se passe ?</h2>
+        <p class="text-gray-500 text-lg">Simple, clair, sans stress.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Témoignage 1 -->
-        <div class="bg-gray-50 rounded-2xl p-7 border border-gray-100 card-hover fade-in-up">
-          <div class="flex gap-1 mb-4">
+
+      <div class="flex flex-col gap-6">
+
+        <!-- Étape 1 -->
+        <div class="flex gap-6 items-start fade-in-up">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-white text-lg shadow-lg" style="background:#1565C0;">1</div>
+            <div class="w-0.5 h-full mt-2" style="background:#E0E7FF; min-height:40px;"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="text-lg font-bold text-gm-marine mb-1">Tu nous contactes</h3>
+            <p class="text-gray-500 leading-relaxed">Un message, un appel ou un formulaire — on échange sur ton projet en moins de 48h. C'est gratuit et sans engagement.</p>
+          </div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="flex gap-6 items-start fade-in-up">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-white text-lg shadow-lg" style="background:#5C35B0;">2</div>
+            <div class="w-0.5 h-full mt-2" style="background:#E0E7FF; min-height:40px;"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="text-lg font-bold text-gm-marine mb-1">On comprend ton besoin</h3>
+            <p class="text-gray-500 leading-relaxed">On prend le temps de cerner ce qui te manque, ce qui marche déjà et ce qu'on peut faire ensemble. On te propose la solution la plus adaptée.</p>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="flex gap-6 items-start fade-in-up">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-white text-lg shadow-lg" style="background:#1565C0;">3</div>
+            <div class="w-0.5 h-full mt-2" style="background:#E0E7FF; min-height:40px;"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="text-lg font-bold text-gm-marine mb-1">On crée, tu valides</h3>
+            <p class="text-gray-500 leading-relaxed">On travaille sur ton projet et on te tient informé à chaque étape. Tu donnes ton avis, on ajuste jusqu'à ce que ce soit parfait.</p>
+          </div>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="flex gap-6 items-start fade-in-up">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-white text-lg shadow-lg" style="background:#5C35B0;">4</div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gm-marine mb-1">On livre, tout le monde est content</h3>
+            <p class="text-gray-500 leading-relaxed">Ton projet est livré clé en main. Tu es en ligne, visible, professionnel. Et on reste disponible si tu as des questions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       NOS OFFRES — les packs avec prix
+       ============================ -->
+  <section id="offres" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-6 fade-in-up">
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Les tarifs</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Nos offres</h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">Des formules claires avec tout ce qui est inclus, sans surprise.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-16">
+        <OffreCard
+          name="Essentiel"
+          price="À partir de 250€"
+          features={['Fiche Google optimisée + visuels','3 posts Google planifiés','Carte NFC + QR code','Guide PDF offert']}
+        />
+        <OffreCard
+          name="Pro"
+          price="À partir de 900€"
+          popular={true}
+          features={["Tout l'Essentiel inclus",'Site web one-page professionnel','Design responsive mobile et desktop','Formulaire de contact intégré','Animations incluses']}
+        />
+        <OffreCard
+          name="Galaxy"
+          price="À partir de 1 200€"
+          features={['Tout le Pro inclus','Logo + identité visuelle complète','Carte de visite et flyer','Livraison en haute résolution']}
+        />
+      </div>
+
+      <!-- Options à la carte -->
+      <div class="rounded-2xl p-8 border border-blue-100 fade-in-up" style="background:#F8FAFF;">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-gm-marine mb-2">Options à la carte</h3>
+          <p class="text-gray-500">À ajouter à n'importe quelle offre selon vos besoins.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
+            <div>
+              <p class="font-semibold text-gm-marine text-sm">Pack 12 visuels réseaux sociaux</p>
+              <p class="text-gray-400 text-xs mt-0.5">Posts personnalisés à vos couleurs</p>
+            </div>
+            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
+            <div>
+              <p class="font-semibold text-gm-marine text-sm">Chatbot sur votre site</p>
+              <p class="text-gray-400 text-xs mt-0.5">Assistant virtuel 24h/24</p>
+            </div>
+            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
+            <div>
+              <p class="font-semibold text-gm-marine text-sm">Système de réservation en ligne</p>
+              <p class="text-gray-400 text-xs mt-0.5">Réservations depuis votre site</p>
+            </div>
+            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       TÉMOIGNAGES — 2 avis
+       ============================ -->
+  <section class="py-24" style="background:#F8FAFF;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-up">
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Avis clients</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Ce qu'ils en pensent</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Avis 1 -->
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm card-hover fade-in-up">
+          <div class="flex gap-1 mb-5">
             {[1,2,3,4,5].map(() => (
               <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
               </svg>
             ))}
           </div>
-          <p class="text-gray-600 leading-relaxed mb-6 italic">"Galaxy Marketing a transformé ma présence en ligne en quelques jours. Mon site est superbe et mes appels ont doublé depuis la mise en ligne !"</p>
+          <p class="text-gray-600 leading-relaxed mb-6 italic text-lg">
+            "Je ne savais pas du tout par où commencer pour ma présence en ligne. Galaxy Marketing a tout géré, du site à la fiche Google. Le résultat est vraiment professionnel et j'ai déjà reçu de nouveaux clients grâce à ça."
+          </p>
           <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-full bg-blue-100 flex items-center justify-center font-bold text-gm-blue text-lg">S</div>
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background:#1565C0;">S</div>
             <div>
-              <p class="font-semibold text-gm-marine text-sm">Sarah M.</p>
-              <p class="text-gray-400 text-xs">Esthéticienne, Paris</p>
+              <p class="font-semibold text-gm-marine">Sarah M.</p>
+              <p class="text-gray-400 text-sm">Esthéticienne — Paris</p>
             </div>
           </div>
         </div>
-        <!-- Témoignage 2 — carte bleue -->
-        <div class="bg-gm-blue rounded-2xl p-7 card-hover fade-in-up">
-          <div class="flex gap-1 mb-4">
+
+        <!-- Avis 2 — carte bleue marine -->
+        <div class="rounded-2xl p-8 card-hover fade-in-up" style="background:#1A237E;">
+          <div class="flex gap-1 mb-5">
             {[1,2,3,4,5].map(() => (
               <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
               </svg>
             ))}
           </div>
-          <p class="text-blue-100 leading-relaxed mb-6 italic">"Résultat pro livré en 3 jours, exactement ce que je voulais. La fiche Google est au top et j'apparais maintenant dans les premiers résultats locaux."</p>
+          <p class="leading-relaxed mb-6 italic text-lg" style="color:rgba(255,255,255,0.85);">
+            "Super à l'écoute, réactif et le rendu est au-delà de mes attentes. Mon logo et mon identité visuelle sont exactement ce que j'avais en tête. Je recommande sans hésiter."
+          </p>
           <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center font-bold text-white text-lg">K</div>
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background:rgba(255,255,255,0.15);">K</div>
             <div>
-              <p class="font-semibold text-white text-sm">Karim B.</p>
-              <p class="text-blue-200 text-xs">Plombier, Lyon</p>
-            </div>
-          </div>
-        </div>
-        <!-- Témoignage 3 -->
-        <div class="bg-gray-50 rounded-2xl p-7 border border-gray-100 card-hover fade-in-up">
-          <div class="flex gap-1 mb-4">
-            {[1,2,3,4,5].map(() => (
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-          <p class="text-gray-600 leading-relaxed mb-6 italic">"Mon logo et mon identité visuelle sont exactement ce que j'imaginais. Très à l'écoute, réactif et le résultat est vraiment professionnel."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-gm-indigo text-lg">A</div>
-            <div>
-              <p class="font-semibold text-gm-marine text-sm">Amina T.</p>
-              <p class="text-gray-400 text-xs">Créatrice de mode, Bordeaux</p>
+              <p class="font-semibold text-white">Karim B.</p>
+              <p class="text-sm" style="color:rgba(255,255,255,0.5);">Artisan plombier — Lyon</p>
             </div>
           </div>
         </div>
@@ -290,87 +397,61 @@ import OffreCard from '../components/OffreCard.astro';
   </section>
 
   <!-- ============================
-       SECTION 7 — SERVICES À LA CARTE
-       ============================ -->
-  <section class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Besoin d'autre chose ?</h2>
-        <p class="text-gray-500 text-lg">Des services supplémentaires selon vos besoins.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm card-hover fade-in-up flex flex-col gap-4">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          </div>
-          <h3 class="text-lg font-bold text-gm-marine">Pack 12 visuels réseaux sociaux</h3>
-          <p class="text-gray-500 text-sm flex-1">12 visuels personnalisés aux couleurs de votre marque pour vos réseaux sociaux.</p>
-          <a href="/contact" class="bg-gm-blue text-white text-center py-2.5 px-5 rounded-lg font-semibold text-sm btn-transition hover:bg-gm-indigo">Sur devis</a>
-        </div>
-        <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm card-hover fade-in-up flex flex-col gap-4">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
-          </div>
-          <h3 class="text-lg font-bold text-gm-marine">Chatbot sur site</h3>
-          <p class="text-gray-500 text-sm flex-1">Assistant virtuel intégré à votre site pour répondre à vos visiteurs 24h/24.</p>
-          <a href="/contact" class="bg-gm-blue text-white text-center py-2.5 px-5 rounded-lg font-semibold text-sm btn-transition hover:bg-gm-indigo">Sur devis</a>
-        </div>
-        <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm card-hover fade-in-up flex flex-col gap-4">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          </div>
-          <h3 class="text-lg font-bold text-gm-marine">Système de réservation en ligne</h3>
-          <p class="text-gray-500 text-sm flex-1">Permettez à vos clients de réserver depuis votre site, à toute heure.</p>
-          <a href="/contact" class="bg-gm-blue text-white text-center py-2.5 px-5 rounded-lg font-semibold text-sm btn-transition hover:bg-gm-indigo">Sur devis</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SECTION 8 — POURQUOI GALAXY MARKETING
+       POURQUOI GALAXY MARKETING
        ============================ -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-4xl font-extrabold text-gm-marine mb-4">Pourquoi Galaxy Marketing ?</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">Ce qui nous différencie et fait la confiance de nos clients.</p>
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Nos engagements</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Pourquoi Galaxy Marketing ?</h2>
       </div>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div class="flex gap-5 fade-in-up">
-          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#EEF2FF;">
+            <svg class="w-7 h-7" style="color:#1565C0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
           </div>
           <div>
-            <h3 class="text-lg font-bold text-gm-marine mb-2">Livraison rapide</h3>
-            <p class="text-gray-500 leading-relaxed">Votre projet livré dans les meilleurs délais, sans compromettre la qualité.</p>
+            <h3 class="text-lg font-bold text-gm-marine mb-2">Suivi de A à Z</h3>
+            <p class="text-gray-500 leading-relaxed">On t'accompagne du brief à la livraison. Tu n'es jamais seul dans le projet.</p>
           </div>
         </div>
+
         <div class="flex gap-5 fade-in-up">
-          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gm-marine mb-2">Sur mesure</h3>
-            <p class="text-gray-500 leading-relaxed">Chaque projet est unique et entièrement adapté à vos besoins.</p>
-          </div>
-        </div>
-        <div class="flex gap-5 fade-in-up">
-          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gm-marine mb-2">Suivi complet</h3>
-            <p class="text-gray-500 leading-relaxed">Accompagnement du début à la fin, communication transparente à chaque étape.</p>
-          </div>
-        </div>
-        <div class="flex gap-5 fade-in-up">
-          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#EEF2FF;">
+            <svg class="w-7 h-7" style="color:#1565C0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
           </div>
           <div>
             <h3 class="text-lg font-bold text-gm-marine mb-2">Résultat professionnel</h3>
-            <p class="text-gray-500 leading-relaxed">Une qualité professionnelle à chaque livraison, quel que soit le budget.</p>
+            <p class="text-gray-500 leading-relaxed">Chaque livrable est soigné et représente fidèlement ton image de marque.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 fade-in-up">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#EEF2FF;">
+            <svg class="w-7 h-7" style="color:#1565C0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gm-marine mb-2">Réponse sous 48h</h3>
+            <p class="text-gray-500 leading-relaxed">On répond vite. Pas de semaines d'attente avant d'avoir un retour.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 fade-in-up">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#EEF2FF;">
+            <svg class="w-7 h-7" style="color:#1565C0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gm-marine mb-2">100% personnalisé</h3>
+            <p class="text-gray-500 leading-relaxed">Pas de template générique. Chaque projet est unique et fait pour toi.</p>
           </div>
         </div>
       </div>
@@ -378,18 +459,67 @@ import OffreCard from '../components/OffreCard.astro';
   </section>
 
   <!-- ============================
-       SECTION 9 — CTA FINAL
+       CTA FINAL
        ============================ -->
   <section class="py-24 gradient-blue">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">
         Prêt à booster votre présence en ligne ?
       </h2>
-      <p class="text-blue-200 text-xl mb-10">Discutons de votre projet. Devis gratuit, réponse sous 24h.</p>
-      <a href="/contact" class="inline-block bg-white text-gm-blue px-10 py-4 rounded-xl font-bold text-lg btn-transition hover:bg-blue-50 shadow-xl">
+      <p class="text-xl mb-10" style="color:rgba(255,255,255,0.7);">Discutons de votre projet. Devis gratuit, réponse sous 48h.</p>
+      <a href="/contact" class="inline-block bg-white px-10 py-4 rounded-xl font-bold text-lg btn-transition hover:bg-blue-50 shadow-xl" style="color:#1565C0;">
         Demander un devis gratuit
       </a>
     </div>
   </section>
 
 </Layout>
+
+<!-- Script particules étoiles pour le hero -->
+<script>
+  const canvas = document.getElementById('stars-canvas') as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext('2d')!;
+    let stars: {x:number, y:number, r:number, speed:number, opacity:number, dir:number}[] = [];
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+
+    const init = () => {
+      stars = [];
+      for (let i = 0; i < 120; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.8 + 0.3,
+          speed: Math.random() * 0.3 + 0.05,
+          opacity: Math.random() * 0.6 + 0.2,
+          dir: Math.random() > 0.5 ? 1 : -1,
+        });
+      }
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(66, 165, 245, ${s.opacity})`;
+        ctx.fill();
+        s.y -= s.speed;
+        s.x += s.dir * 0.1;
+        s.opacity += 0.003 * s.dir;
+        if (s.opacity > 0.8 || s.opacity < 0.1) s.dir *= -1;
+        if (s.y < -5) { s.y = canvas.height + 5; s.x = Math.random() * canvas.width; }
+      });
+      requestAnimationFrame(draw);
+    };
+
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize();
+    init();
+    draw();
+  }
+</script>
