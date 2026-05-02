@@ -1,0 +1,67 @@
+---
+// Carte d'offre — prix, liste des inclus, bouton CTA
+interface Props {
+  name: string;
+  price: string;
+  features: string[];
+  popular?: boolean;
+}
+
+const { name, price, features, popular = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-2xl p-8 flex flex-col gap-6 fade-in-up card-hover',
+    popular
+      ? 'bg-gm-blue text-white shadow-2xl scale-105 relative border-2 border-gm-light'
+      : 'bg-white border border-gray-100 shadow-sm text-gray-800'
+  ]}
+>
+  <!-- Badge populaire -->
+  {popular && (
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+      <span class="bg-gm-light text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">
+        Le plus populaire
+      </span>
+    </div>
+  )}
+
+  <!-- En-tête -->
+  <div>
+    <h3 class:list={['text-2xl font-bold mb-1', popular ? 'text-white' : 'text-gm-marine']}>
+      {name}
+    </h3>
+    <p class:list={['text-3xl font-extrabold', popular ? 'text-gm-light' : 'text-gm-blue']}>
+      {price}
+    </p>
+  </div>
+
+  <!-- Liste des inclus -->
+  <ul class="flex flex-col gap-3 flex-1">
+    {features.map((feature) => (
+      <li class="flex items-start gap-2.5 text-sm">
+        <svg
+          class:list={['w-5 h-5 flex-shrink-0 mt-0.5', popular ? 'text-gm-light' : 'text-gm-blue']}
+          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class:list={popular ? 'text-blue-100' : 'text-gray-600'}>{feature}</span>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Bouton CTA -->
+  <a
+    href="/contact"
+    class:list={[
+      'w-full text-center py-3 px-6 rounded-xl font-semibold btn-transition',
+      popular
+        ? 'bg-white text-gm-blue hover:bg-blue-50'
+        : 'bg-gm-blue text-white hover:bg-gm-indigo'
+    ]}
+  >
+    Demander un devis
+  </a>
+</div>

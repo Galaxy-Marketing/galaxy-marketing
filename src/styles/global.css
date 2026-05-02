@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* Couleurs personnalisées Galaxy Marketing */
+@theme {
+  --color-gm-white: #FFFFFF;
+  --color-gm-marine: #1A237E;
+  --color-gm-blue: #1565C0;
+  --color-gm-indigo: #5C35B0;
+  --color-gm-light: #42A5F5;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Animations globales */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade-in au scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Étoiles flottantes dans le hero */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #42A5F5;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float-star var(--duration, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes float-star {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+  33%       { transform: translateY(-20px) translateX(8px); opacity: 0.5; }
+  66%       { transform: translateY(-8px) translateX(-6px); opacity: 0.3; }
+}
+
+/* Hover cartes */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(21, 101, 192, 0.15);
+}
+
+/* Hover boutons */
+.btn-transition {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Dégradé bleu → indigo */
+.gradient-blue {
+  background: linear-gradient(135deg, #1565C0 0%, #5C35B0 100%);
+}
+
+/* Navbar scroll */
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(26, 35, 126, 0.08);
+}

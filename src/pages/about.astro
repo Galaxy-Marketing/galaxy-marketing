@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="À propos — Galaxy Marketing"
+  description="Découvrez Galaxy Marketing, agence spécialisée dans la présence digitale des entreprises locales et entrepreneurs — site web, fiche Google, identité visuelle."
+>
+
+  <!-- En-tête -->
+  <section class="py-24 bg-gradient-to-br from-blue-50 to-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-extrabold text-gm-marine mb-5 fade-in-up">
+        À propos de Galaxy Marketing
+      </h1>
+    </div>
+  </section>
+
+  <!-- Présentation -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <!-- Image -->
+        <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85"
+            alt="L'équipe Galaxy Marketing"
+            class="w-full h-80 object-cover"
+          />
+        </div>
+
+        <!-- Texte -->
+        <div class="fade-in-up">
+          <h2 class="text-3xl font-extrabold text-gm-marine mb-5">Qui sommes-nous ?</h2>
+          <p class="text-gray-600 leading-relaxed mb-5 text-lg">
+            Galaxy Marketing est une agence spécialisée dans la présence digitale des entreprises locales et entrepreneurs.
+          </p>
+          <p class="text-gray-500 leading-relaxed mb-5">
+            Site web, fiche Google et identité visuelle — on s'occupe de votre image en ligne pour que vous puissiez vous concentrer sur votre cœur de métier.
+          </p>
+          <p class="text-gray-500 leading-relaxed">
+            Notre objectif est simple : vous offrir une présence digitale professionnelle, efficace et accessible, quel que soit votre secteur d'activité ou votre budget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14 fade-in-up">
+        <h2 class="text-3xl font-extrabold text-gm-marine mb-3">Nos valeurs</h2>
+        <p class="text-gray-500">Ce qui guide chacun de nos projets.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Rapidité -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover fade-in-up text-center">
+          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-5 mx-auto">
+            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Rapidité</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">
+            Nous respectons les délais et livrons vos projets dans les meilleurs temps sans jamais sacrifier la qualité.
+          </p>
+        </div>
+
+        <!-- Qualité -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover fade-in-up text-center">
+          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-5 mx-auto">
+            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Qualité</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">
+            Chaque livrable est soigné, professionnel et représente fidèlement l'image que vous souhaitez projeter.
+          </p>
+        </div>
+
+        <!-- Simplicité -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover fade-in-up text-center">
+          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-5 mx-auto">
+            <svg class="w-7 h-7 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gm-marine mb-3">Simplicité</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">
+            Un processus clair et transparent du début à la fin. Pas de jargon, pas de surprise — juste des résultats concrets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-20 gradient-blue">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+      <h2 class="text-3xl font-extrabold text-white mb-5">Un projet en tête ?</h2>
+      <p class="text-blue-200 mb-8">
+        Discutons-en ensemble. Devis gratuit, sans engagement, réponse sous 24h.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-white text-gm-blue px-8 py-4 rounded-xl font-bold btn-transition hover:bg-blue-50 shadow-xl"
+      >
+        Nous contacter
+      </a>
+    </div>
+  </section>
+
+</Layout>

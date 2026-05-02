@@ -1,0 +1,76 @@
+---
+// Footer — fond bleu marine, 3 colonnes, copyright en bas
+---
+
+<footer class="bg-gm-marine text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Logo + nom -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-2">
+          <img
+            src="/logo.png"
+            alt="Galaxy Marketing"
+            class="h-10 w-auto brightness-0 invert"
+            onerror="this.style.display='none'; document.getElementById('footer-logo-text').style.display='block';"
+          />
+          <span
+            id="footer-logo-text"
+            class="text-white font-bold text-xl"
+            style="display:none;"
+          >
+            Galaxy Marketing
+          </span>
+        </div>
+        <p class="text-blue-200 text-sm leading-relaxed">
+          Votre présence digitale, pensée pour vous. Site web, fiche Google et identité visuelle.
+        </p>
+      </div>
+
+      <!-- Liens rapides -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 text-lg">Liens rapides</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="/" class="text-blue-200 hover:text-white btn-transition text-sm">Accueil</a></li>
+          <li><a href="/services" class="text-blue-200 hover:text-white btn-transition text-sm">Services</a></li>
+          <li><a href="/#offres" class="text-blue-200 hover:text-white btn-transition text-sm">Offres</a></li>
+          <li><a href="/contact" class="text-blue-200 hover:text-white btn-transition text-sm">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 text-lg">Contact</h3>
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-center gap-2 text-sm text-blue-200">
+            <!-- Icône email -->
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href="mailto:contact@galaxy-marketing.fr" class="hover:text-white btn-transition">
+              contact@galaxy-marketing.fr
+            </a>
+          </li>
+          <li class="flex items-center gap-2 text-sm text-blue-200">
+            <!-- Icône téléphone -->
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <a href="tel:0759701730" class="hover:text-white btn-transition">
+              07 59 70 17 30
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-10 pt-6 border-t border-blue-800 text-center">
+      <p class="text-blue-300 text-sm">
+        © 2025 Galaxy Marketing. Tous droits réservés.
+      </p>
+    </div>
+  </div>
+</footer>
