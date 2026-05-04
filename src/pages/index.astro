@@ -68,7 +68,7 @@ import OffreCard from '../components/OffreCard.astro';
             <img
               src="/mockup-site.png"
               alt="Site web vitrine"
-              class="w-full"
+              class="w-full h-44 object-cover object-top"
             />
             <!-- Info bas -->
             <div class="px-4 py-3">
@@ -142,46 +142,19 @@ import OffreCard from '../components/OffreCard.astro';
           <!-- Card 3 — Identité visuelle (bas centre) — carte de visite pastel -->
           <div class="float-c flex-shrink-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(92,53,176,0.3); border:1px solid rgba(92,53,176,0.45); backdrop-filter:blur(16px);">
             <p class="text-white font-bold text-sm mb-3">Identité visuelle</p>
-            <!-- Carte de visite blanc & rose -->
-            <div class="rounded-xl shadow-xl overflow-hidden" style="background:#FFFAF9;">
-              <!-- Header rose avec formes décoratives -->
-              <div class="relative h-12 overflow-hidden" style="background:#FDE8E8;">
-                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 256 48" preserveAspectRatio="none">
-                  <path d="M0 0h256v28C220 44 180 36 140 40S60 48 0 48V0z" fill="#F9A8D4" opacity="0.5"/>
-                  <circle cx="210" cy="10" r="18" fill="#FCD34D" opacity="0.45"/>
-                  <circle cx="238" cy="30" r="10" fill="#D1D5DB" opacity="0.4"/>
-                </svg>
-                <!-- Logo rond -->
-                <div class="absolute bottom-0 left-4 translate-y-1/2 w-8 h-8 rounded-full shadow flex items-center justify-center z-10" style="background:#fff; border:2px solid #F9A8D4;">
-                  <img src="/logo-icon.png" alt="" class="w-5 h-5 object-contain" />
-                </div>
-                <!-- Nom entreprise -->
-                <p class="absolute top-2 right-3 text-xs font-bold" style="color:#9D174D;">Mon Entreprise</p>
-              </div>
-              <!-- Infos -->
-              <div class="pt-6 px-4 pb-3">
-                <p class="font-bold text-sm" style="color:#1F2937;">Dupont</p>
-                <p class="text-xs mt-0.5" style="color:#F9A8D4;">Gérant</p>
-                <div class="mt-2 space-y-0.5">
-                  <p class="text-xs" style="color:#9CA3AF;">contact@monentreprise.fr</p>
-                  <p class="text-xs" style="color:#9CA3AF;">01 23 45 67</p>
-                </div>
-              </div>
-              <!-- Barre couleurs bas -->
-              <div class="flex h-1">
-                <div class="flex-1" style="background:#F9A8D4;"></div>
-                <div class="flex-1" style="background:#FCD34D;"></div>
-                <div class="flex-1" style="background:#D1D5DB;"></div>
-                <div class="flex-1" style="background:#F9A8D4;"></div>
-              </div>
-            </div>
+            <!-- Photo carte de visite réelle -->
+            <img
+              src="/carte-visite.png"
+              alt="Carte de visite"
+              class="w-full rounded-xl shadow-xl"
+            />
             <!-- Palette -->
             <div class="flex items-center justify-between mt-3">
               <div class="flex gap-1.5">
-                <div class="w-4 h-4 rounded-full shadow" style="background:#F9A8D4;"></div>
-                <div class="w-4 h-4 rounded-full shadow" style="background:#FCD34D;"></div>
-                <div class="w-4 h-4 rounded-full shadow" style="background:#D1D5DB;"></div>
-                <div class="w-4 h-4 rounded-full shadow border border-white/30" style="background:#1F2937;"></div>
+                <div class="w-4 h-4 rounded-full shadow" style="background:#C4A882;"></div>
+                <div class="w-4 h-4 rounded-full shadow" style="background:#B87356;"></div>
+                <div class="w-4 h-4 rounded-full shadow" style="background:#2D3B2D;"></div>
+                <div class="w-4 h-4 rounded-full shadow border border-white/30" style="background:#F5F0EB;"></div>
               </div>
               <p class="text-xs" style="color:rgba(255,255,255,0.5);">Logo · Carte · Flyer</p>
             </div>
