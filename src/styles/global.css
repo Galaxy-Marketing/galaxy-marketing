@@ -115,6 +115,29 @@ html {
   background: linear-gradient(135deg, #1565C0 0%, #5C35B0 100%);
 }
 
+/* Hero cards — scroll horizontal mobile, positions absolues desktop */
+.hero-cards-container {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hero-cards-container::-webkit-scrollbar { display: none; }
+
+@media (min-width: 1024px) {
+  .hero-cards-container {
+    display: block;
+    position: relative;
+    height: 480px;
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
 /* Navbar scroll */
 .navbar-scrolled {
   background: rgba(255, 255, 255, 0.92) !important;
