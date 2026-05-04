@@ -1,13 +1,12 @@
 ---
-// Carte d'offre — prix, liste des inclus, bouton CTA
 interface Props {
   name: string;
-  price: string;
+  subtitle?: string;
   features: string[];
   popular?: boolean;
 }
 
-const { name, price, features, popular = false } = Astro.props;
+const { name, subtitle, features, popular = false } = Astro.props;
 ---
 
 <div
@@ -32,9 +31,11 @@ const { name, price, features, popular = false } = Astro.props;
     <h3 class:list={['text-2xl font-bold mb-1', popular ? 'text-white' : 'text-gm-marine']}>
       {name}
     </h3>
-    <p class:list={['text-3xl font-extrabold', popular ? 'text-gm-light' : 'text-gm-blue']}>
-      {price}
-    </p>
+    {subtitle && (
+      <p class:list={['text-sm', popular ? 'text-blue-200' : 'text-gray-400']}>
+        {subtitle}
+      </p>
+    )}
   </div>
 
   <!-- Liste des inclus -->
