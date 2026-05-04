@@ -170,12 +170,9 @@ import OffreCard from '../components/OffreCard.astro';
        STATS ANIMÉES — 3 chiffres clés
        ============================ -->
   <section class="py-14 relative overflow-hidden" style="background:linear-gradient(180deg, #0D1235 0%, #080F26 100%);">
-    <!-- Lignes lumineuses haut/bas -->
-    <div class="absolute top-0 left-0 right-0" style="height:1px; background:linear-gradient(90deg, transparent 0%, rgba(66,165,245,0.45) 50%, transparent 100%);"></div>
-    <div class="absolute bottom-0 left-0 right-0" style="height:1px; background:linear-gradient(90deg, transparent 0%, rgba(66,165,245,0.2) 50%, transparent 100%);"></div>
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
 
         <!-- Stat 1 : 48h -->
         <div class="fade-in-up delay-100 text-center rounded-2xl px-6 py-8 relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
@@ -188,7 +185,6 @@ import OffreCard from '../components/OffreCard.astro';
             <span class="counter" data-target="48" data-suffix="h">0h</span>
           </p>
           <p class="text-xs font-semibold uppercase tracking-widest mt-4" style="color:rgba(255,255,255,0.32);">Réponse garantie</p>
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.5), transparent);"></div>
         </div>
 
         <!-- Stat 2 : 100% — centrale, mise en avant -->
@@ -203,7 +199,6 @@ import OffreCard from '../components/OffreCard.astro';
             <span class="counter" data-target="100" data-suffix="%">0%</span>
           </p>
           <p class="text-xs font-semibold uppercase tracking-widest mt-4 relative" style="color:rgba(66,165,245,0.6);">Satisfaction</p>
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.85), transparent);"></div>
         </div>
 
         <!-- Stat 3 : 0€ -->
@@ -213,9 +208,8 @@ import OffreCard from '../components/OffreCard.astro';
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 014-4M12 8V6a4 4 0 00-4-4M12 8H4m8 0h8M4 8v11a2 2 0 002 2h12a2 2 0 002-2V8"/>
             </svg>
           </div>
-          <p class="text-5xl sm:text-6xl font-black text-white leading-none mb-1">0€</p>
-          <p class="text-xs font-semibold uppercase tracking-widest mt-4" style="color:rgba(255,255,255,0.32);">Pour le devis</p>
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.5), transparent);"></div>
+          <p class="text-5xl sm:text-6xl font-black leading-none mb-1" style="color:#42A5F5;">Gratuit</p>
+          <p class="text-xs font-semibold uppercase tracking-widest mt-4" style="color:rgba(255,255,255,0.32);">Le devis</p>
         </div>
 
       </div>
