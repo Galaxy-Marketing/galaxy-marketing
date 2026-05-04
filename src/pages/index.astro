@@ -51,59 +51,99 @@ import OffreCard from '../components/OffreCard.astro';
         </div>
 
         <!-- 3 cartes flottantes droite -->
-        <div class="relative hidden lg:flex items-center justify-center" style="height:460px;">
+        <div class="relative hidden lg:flex items-center justify-center" style="height:480px;">
 
-          <!-- Card 1 — Site web (haut gauche, flotte lentement) -->
-          <div class="float-a absolute top-0 left-0 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(16px);">
+          <!-- Card 1 — Site web vitrine (haut gauche) -->
+          <div class="float-a absolute top-0 left-0 w-64 rounded-2xl overflow-hidden shadow-2xl" style="background:rgba(15,20,50,0.9); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(16px);">
+            <!-- Mini browser chrome -->
+            <div class="flex items-center gap-1.5 px-3 py-2.5" style="background:rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
+              <div class="flex-1 rounded-full h-3.5 ml-1 flex items-center px-2" style="background:rgba(255,255,255,0.08);">
+                <span class="text-white/30 text-xs">galaxy-client.fr</span>
+              </div>
+            </div>
+            <!-- Screenshot site -->
             <img
-              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=500&q=80"
-              alt="Site web professionnel"
-              class="rounded-xl w-full h-28 object-cover mb-3"
+              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=500&q=80"
+              alt="Site web vitrine"
+              class="w-full h-28 object-cover"
             />
-            <div class="flex items-center justify-between">
+            <!-- Info bas -->
+            <div class="px-4 py-3 flex items-center justify-between">
               <div>
                 <p class="text-white font-bold text-sm">Site web vitrine</p>
-                <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.45);">Livré clé en main</p>
+                <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4);">Livré clé en main</p>
               </div>
-              <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                 </svg>
               </div>
             </div>
           </div>
 
-          <!-- Card 2 — Fiche Google (haut droite, flotte différemment) -->
-          <div class="float-b absolute top-4 right-0 w-52 rounded-2xl p-5 shadow-2xl" style="background:rgba(21,101,192,0.35); border:1px solid rgba(66,165,245,0.35); backdrop-filter:blur(16px);">
-            <div class="flex items-center gap-2 mb-4">
-              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#1565C0;">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
+          <!-- Card 2 — Fiche Google (haut droite) — style Google Business -->
+          <div class="float-b absolute top-4 right-0 w-52 rounded-2xl p-4 shadow-2xl" style="background:white; border:1px solid rgba(0,0,0,0.08);">
+            <!-- Header Google -->
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-black text-white text-base flex-shrink-0" style="background:linear-gradient(135deg,#4285F4 0%,#34A853 100%);">G</div>
+              <div>
+                <p class="text-gray-900 font-bold text-xs leading-tight">Votre entreprise</p>
+                <p class="text-gray-400 text-xs">Agence · Marketing</p>
               </div>
-              <p class="text-white font-bold text-sm">Fiche Google</p>
             </div>
-            <div class="flex gap-0.5 mb-1">
-              {[1,2,3,4,5].map(() => (
-                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                </svg>
-              ))}
+            <!-- Étoiles -->
+            <div class="flex items-center gap-1.5 mb-2">
+              <span class="font-bold text-sm" style="color:#F5A623;">5,0</span>
+              <div class="flex gap-0.5">
+                {[1,2,3,4,5].map(() => (
+                  <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+              <span class="text-gray-400 text-xs">(24)</span>
             </div>
-            <p class="text-white font-extrabold text-xl">5 / 5</p>
-            <p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">1er sur votre secteur</p>
+            <!-- Statut -->
+            <div class="flex items-center gap-1.5 mb-3">
+              <div class="w-2 h-2 rounded-full bg-green-500"></div>
+              <span class="text-green-600 text-xs font-semibold">Ouvert</span>
+              <span class="text-gray-400 text-xs">· 1er sur Google</span>
+            </div>
+            <!-- Bouton -->
+            <div class="rounded-lg py-1.5 text-center text-xs font-semibold" style="background:#1565C0; color:white;">Voir la fiche</div>
           </div>
 
-          <!-- Card 3 — Identité visuelle (bas centre, flotte encore différemment) -->
-          <div class="float-c absolute bottom-0 left-1/2 -translate-x-1/2 w-60 rounded-2xl p-5 shadow-2xl" style="background:rgba(92,53,176,0.3); border:1px solid rgba(92,53,176,0.45); backdrop-filter:blur(16px);">
+          <!-- Card 3 — Identité visuelle (bas centre) — mockup carte de visite -->
+          <div class="float-c absolute bottom-0 left-1/2 -translate-x-1/2 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(92,53,176,0.3); border:1px solid rgba(92,53,176,0.45); backdrop-filter:blur(16px);">
             <p class="text-white font-bold text-sm mb-3">Identité visuelle</p>
-            <div class="flex gap-2 mb-3">
-              <div class="w-9 h-9 rounded-full shadow-lg" style="background:#1565C0;"></div>
-              <div class="w-9 h-9 rounded-full shadow-lg" style="background:#42A5F5;"></div>
-              <div class="w-9 h-9 rounded-full shadow-lg" style="background:#5C35B0;"></div>
-              <div class="w-9 h-9 rounded-full shadow-lg border border-white/20" style="background:#0A0F2C;"></div>
+            <!-- Mini carte de visite -->
+            <div class="rounded-xl p-3 mb-3 shadow-lg" style="background:linear-gradient(135deg,#0A0F2C 0%,#1565C0 100%);">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 rounded-full flex-shrink-0" style="background:rgba(66,165,245,0.4); border:1px solid rgba(66,165,245,0.5);"></div>
+                <div>
+                  <p class="text-white text-xs font-bold leading-tight">Votre Entreprise</p>
+                  <p class="text-xs" style="color:rgba(255,255,255,0.4);">contact@exemple.fr</p>
+                </div>
+              </div>
+              <div class="flex gap-1 mt-2">
+                <div class="h-1 rounded-full flex-1" style="background:#42A5F5;"></div>
+                <div class="h-1 rounded-full flex-1" style="background:#5C35B0;"></div>
+                <div class="h-1 rounded-full flex-1" style="background:#1A237E;"></div>
+              </div>
             </div>
-            <p class="text-xs" style="color:rgba(255,255,255,0.5);">Logo · Charte graphique · Flyer</p>
+            <!-- Palette + label -->
+            <div class="flex items-center justify-between">
+              <div class="flex gap-1.5">
+                <div class="w-5 h-5 rounded-full shadow" style="background:#1565C0;"></div>
+                <div class="w-5 h-5 rounded-full shadow" style="background:#42A5F5;"></div>
+                <div class="w-5 h-5 rounded-full shadow" style="background:#5C35B0;"></div>
+                <div class="w-5 h-5 rounded-full shadow border border-white/20" style="background:#0A0F2C;"></div>
+              </div>
+              <p class="text-xs" style="color:rgba(255,255,255,0.5);">Logo · Carte · Flyer</p>
+            </div>
           </div>
 
         </div>
