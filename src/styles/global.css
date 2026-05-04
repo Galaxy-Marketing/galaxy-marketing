@@ -115,6 +115,33 @@ html {
   background: linear-gradient(135deg, #1565C0 0%, #5C35B0 100%);
 }
 
+/* Nébuleuse hero — blobs animés */
+.nebula-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+@keyframes nebula-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(50px, -40px) scale(1.1); }
+  66%       { transform: translate(-30px, 28px) scale(0.95); }
+}
+@keyframes nebula-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-60px, 40px) scale(1.07); }
+  75%       { transform: translate(40px, -22px) scale(1.13); }
+}
+@keyframes nebula-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(35px, -50px) scale(1.09); }
+}
+@keyframes nebula-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30%       { transform: translate(-40px, -30px) scale(1.05); }
+  70%       { transform: translate(55px, 35px) scale(0.97); }
+}
+
 /* Hero cards — scroll horizontal mobile, positions absolues desktop */
 .hero-cards-container {
   display: flex;
