@@ -32,5 +32,44 @@ const { title, description } = Astro.props;
     <Footer />
     <!-- Script animations globales -->
     <script src="/animations.js" defer></script>
+    <!-- Curseur étoile filante -->
+    <script>
+      if (window.matchMedia('(pointer: fine)').matches) {
+        const dot = document.createElement('div');
+        dot.className = 'gm-cursor';
+        document.body.appendChild(dot);
+
+        const TRAIL = 18;
+        const trails: HTMLDivElement[] = [];
+        const hist: {x:number; y:number}[] = Array.from({ length: TRAIL }, () => ({ x: -300, y: -300 }));
+
+        for (let i = 0; i < TRAIL; i++) {
+          const t = document.createElement('div') as HTMLDivElement;
+          t.className = 'gm-cursor-trail';
+          const size = Math.max(1.4, 5.5 - i * 0.23);
+          t.style.cssText = `width:${size}px;height:${size}px;opacity:${((1 - i / TRAIL) * 0.78).toFixed(2)};`;
+          document.body.appendChild(t);
+          trails.push(t);
+        }
+
+        let mx = -300, my = -300;
+
+        document.addEventListener('mousemove', e => {
+          mx = e.clientX; my = e.clientY;
+          dot.style.left = mx + 'px';
+          dot.style.top = my + 'px';
+        });
+
+        (function loop() {
+          hist.unshift({ x: mx, y: my });
+          hist.length = TRAIL;
+          trails.forEach((t, i) => {
+            t.style.left = hist[i].x + 'px';
+            t.style.top = hist[i].y + 'px';
+          });
+          requestAnimationFrame(loop);
+        })();
+      }
+    </script>
   </body>
 </html>

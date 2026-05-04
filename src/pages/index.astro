@@ -169,29 +169,53 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        STATS ANIMÉES — 3 chiffres clés
        ============================ -->
-  <section class="py-20" style="background:#0D1235;">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-3 gap-4 text-center">
+  <section class="py-14 relative overflow-hidden" style="background:linear-gradient(180deg, #0D1235 0%, #080F26 100%);">
+    <!-- Lignes lumineuses haut/bas -->
+    <div class="absolute top-0 left-0 right-0" style="height:1px; background:linear-gradient(90deg, transparent 0%, rgba(66,165,245,0.45) 50%, transparent 100%);"></div>
+    <div class="absolute bottom-0 left-0 right-0" style="height:1px; background:linear-gradient(90deg, transparent 0%, rgba(66,165,245,0.2) 50%, transparent 100%);"></div>
 
-        <div class="fade-in-up delay-100">
-          <p class="text-5xl sm:text-7xl font-black text-white leading-none mb-3">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+        <!-- Stat 1 : 48h -->
+        <div class="fade-in-up delay-100 text-center rounded-2xl px-6 py-8 relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+          <div class="w-11 h-11 mx-auto mb-5 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.12);">
+            <svg class="w-5 h-5" style="color:#42A5F5;" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <p class="text-5xl sm:text-6xl font-black text-white leading-none mb-1">
             <span class="counter" data-target="48" data-suffix="h">0h</span>
           </p>
-          <p class="text-xs sm:text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Réponse garantie</p>
+          <p class="text-xs font-semibold uppercase tracking-widest mt-4" style="color:rgba(255,255,255,0.32);">Réponse garantie</p>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.5), transparent);"></div>
         </div>
 
-        <div class="fade-in-up delay-200 relative">
-          <div class="absolute left-0 top-1/2 -translate-y-1/2 w-px h-12" style="background:rgba(255,255,255,0.1);"></div>
-          <div class="absolute right-0 top-1/2 -translate-y-1/2 w-px h-12" style="background:rgba(255,255,255,0.1);"></div>
-          <p class="text-5xl sm:text-7xl font-black leading-none mb-3" style="color:#42A5F5;">
+        <!-- Stat 2 : 100% — centrale, mise en avant -->
+        <div class="fade-in-up delay-200 text-center rounded-2xl px-6 py-8 relative overflow-hidden" style="background:linear-gradient(135deg, rgba(21,101,192,0.2) 0%, rgba(66,165,245,0.07) 100%); border:1px solid rgba(66,165,245,0.28);">
+          <div class="absolute inset-0 pointer-events-none opacity-25" style="background:radial-gradient(ellipse at 50% 70%, rgba(66,165,245,0.4) 0%, transparent 70%);"></div>
+          <div class="w-11 h-11 mx-auto mb-5 rounded-xl flex items-center justify-center relative" style="background:rgba(66,165,245,0.18);">
+            <svg class="w-5 h-5" style="color:#42A5F5;" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <p class="text-5xl sm:text-6xl font-black leading-none mb-1 relative" style="color:#42A5F5;">
             <span class="counter" data-target="100" data-suffix="%">0%</span>
           </p>
-          <p class="text-xs sm:text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Satisfaction</p>
+          <p class="text-xs font-semibold uppercase tracking-widest mt-4 relative" style="color:rgba(66,165,245,0.6);">Satisfaction</p>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.85), transparent);"></div>
         </div>
 
-        <div class="fade-in-up delay-300">
-          <p class="text-5xl sm:text-7xl font-black text-white leading-none mb-3">0€</p>
-          <p class="text-xs sm:text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Pour le devis</p>
+        <!-- Stat 3 : 0€ -->
+        <div class="fade-in-up delay-300 text-center rounded-2xl px-6 py-8 relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+          <div class="w-11 h-11 mx-auto mb-5 rounded-xl flex items-center justify-center" style="background:rgba(66,165,245,0.12);">
+            <svg class="w-5 h-5" style="color:#42A5F5;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 014-4M12 8V6a4 4 0 00-4-4M12 8H4m8 0h8M4 8v11a2 2 0 002 2h12a2 2 0 002-2V8"/>
+            </svg>
+          </div>
+          <p class="text-5xl sm:text-6xl font-black text-white leading-none mb-1">0€</p>
+          <p class="text-xs font-semibold uppercase tracking-widest mt-4" style="color:rgba(255,255,255,0.32);">Pour le devis</p>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full" style="width:56px; height:2px; background:linear-gradient(90deg, transparent, rgba(66,165,245,0.5), transparent);"></div>
         </div>
 
       </div>
