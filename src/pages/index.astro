@@ -11,15 +11,14 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        HERO — 3 cartes flottantes + animations entrée
        ============================ -->
-  <section class="relative flex items-center overflow-hidden" style="background:#0A0F2C; min-height:82vh;">
+  <section class="relative flex items-center overflow-hidden" style="background:linear-gradient(135deg, #060C26 0%, #0D1845 28%, #101E5A 55%, #0A0F2C 100%); min-height:82vh;">
 
-    <!-- Photo galaxie en fond -->
-    <div class="absolute inset-0" style="background-image:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1920&q=85'); background-size:cover; background-position:top center;"></div>
-    <!-- Overlay sombre pour lisibilité + couleurs brand -->
-    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(10,15,44,0.82) 0%, rgba(26,35,126,0.65) 50%, rgba(10,15,44,0.78) 100%);"></div>
-    <!-- Halos brand sur la galaxie -->
-    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(21,101,192,0.35) 0%, transparent 70%); width:600px; height:600px; left:-100px; top:-80px; animation:nebula-1 22s ease-in-out infinite;"></div>
-    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(92,53,176,0.3) 0%, transparent 70%); width:500px; height:500px; right:-80px; bottom:0; animation:nebula-2 28s ease-in-out infinite; animation-delay:-10s;"></div>
+    <!-- Halos nébuleux CSS — 100% dans la charte bleue -->
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(21,101,192,0.45) 0%, transparent 70%); width:700px; height:700px; left:-150px; top:-120px; animation:nebula-1 22s ease-in-out infinite;"></div>
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(66,165,245,0.2) 0%, transparent 70%); width:550px; height:550px; right:-100px; bottom:-50px; animation:nebula-2 28s ease-in-out infinite; animation-delay:-10s;"></div>
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(92,53,176,0.25) 0%, transparent 70%); width:400px; height:400px; left:40%; top:20%; animation:nebula-3 18s ease-in-out infinite; animation-delay:-6s;"></div>
+    <!-- Fondu bas vers la barre stats -->
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:80px; background:linear-gradient(to bottom, transparent, #0D1235);"></div>
 
     <!-- Canvas particules étoiles (par-dessus tout) -->
     <canvas id="stars-canvas" class="absolute inset-0 w-full h-full" style="z-index:1;" aria-hidden="true"></canvas>
@@ -140,7 +139,7 @@ import OffreCard from '../components/OffreCard.astro';
           </div>
 
           <!-- Card 3 — Identité visuelle (bas centre) -->
-          <div class="float-c flex-shrink-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(180,120,80,0.25); border:1px solid rgba(196,120,90,0.45); backdrop-filter:blur(16px);">
+          <div class="float-c flex-shrink-0 lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(10,18,60,0.88); border:1px solid rgba(66,165,245,0.22); backdrop-filter:blur(16px);">
             <p class="text-white font-bold text-sm mb-3">Identité visuelle</p>
             <!-- Photo identité visuelle complète -->
             <img
@@ -148,15 +147,15 @@ import OffreCard from '../components/OffreCard.astro';
               alt="Identité visuelle"
               class="w-full rounded-xl shadow-xl"
             />
-            <!-- Palette assortie à l'image -->
+            <!-- Palette -->
             <div class="flex items-center justify-between mt-3">
               <div class="flex gap-1.5">
                 <div class="w-4 h-4 rounded-full shadow" style="background:#C4785A;"></div>
+                <div class="w-4 h-4 rounded-full shadow" style="background:#E8D5C4;"></div>
                 <div class="w-4 h-4 rounded-full shadow" style="background:#7B8C6E;"></div>
-                <div class="w-4 h-4 rounded-full shadow" style="background:#F5EDE4;"></div>
-                <div class="w-4 h-4 rounded-full shadow border border-white/20" style="background:#3A3226;"></div>
+                <div class="w-4 h-4 rounded-full shadow border border-white/20" style="background:#2C2018;"></div>
               </div>
-              <p class="text-xs" style="color:rgba(255,255,255,0.5);">Logo · Carte · Flyer</p>
+              <p class="text-xs" style="color:rgba(255,255,255,0.45);">Logo · Carte · Flyer</p>
             </div>
           </div>
 
