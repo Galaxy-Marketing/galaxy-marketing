@@ -11,14 +11,15 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        HERO — 3 cartes flottantes + animations entrée
        ============================ -->
-  <section class="relative flex items-center overflow-hidden" style="background:linear-gradient(135deg, #060C26 0%, #0D1845 28%, #101E5A 55%, #0A0F2C 100%); min-height:82vh;">
+  <section class="relative flex items-center overflow-hidden" style="background:linear-gradient(145deg, #04091E 0%, #080F30 20%, #0C1648 40%, #0A1238 60%, #06091E 100%); min-height:82vh;">
 
-    <!-- Halos nébuleux CSS — 100% dans la charte bleue -->
-    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(21,101,192,0.45) 0%, transparent 70%); width:700px; height:700px; left:-150px; top:-120px; animation:nebula-1 22s ease-in-out infinite;"></div>
-    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(66,165,245,0.2) 0%, transparent 70%); width:550px; height:550px; right:-100px; bottom:-50px; animation:nebula-2 28s ease-in-out infinite; animation-delay:-10s;"></div>
-    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(92,53,176,0.25) 0%, transparent 70%); width:400px; height:400px; left:40%; top:20%; animation:nebula-3 18s ease-in-out infinite; animation-delay:-6s;"></div>
+    <!-- Nébulosités CSS — bleu dominant, mauve profondeur -->
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(21,101,192,0.5) 0%, transparent 70%); width:750px; height:750px; left:-180px; top:-140px; animation:nebula-1 24s ease-in-out infinite;"></div>
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(66,165,245,0.22) 0%, transparent 70%); width:600px; height:600px; right:-120px; bottom:-60px; animation:nebula-2 30s ease-in-out infinite; animation-delay:-12s;"></div>
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(100,60,210,0.13) 0%, transparent 70%); width:500px; height:500px; left:38%; top:5%; animation:nebula-3 20s ease-in-out infinite; animation-delay:-7s;"></div>
+    <div class="nebula-blob" style="background:radial-gradient(circle, rgba(30,80,180,0.28) 0%, transparent 70%); width:380px; height:380px; right:30%; bottom:10%; animation:nebula-4 26s ease-in-out infinite; animation-delay:-3s;"></div>
     <!-- Fondu bas vers la barre stats -->
-    <div class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:80px; background:linear-gradient(to bottom, transparent, #0D1235);"></div>
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:100px; background:linear-gradient(to bottom, transparent, #0D1235);"></div>
 
     <!-- Canvas particules étoiles (par-dessus tout) -->
     <canvas id="stars-canvas" class="absolute inset-0 w-full h-full" style="z-index:1;" aria-hidden="true"></canvas>
@@ -705,7 +706,8 @@ import OffreCard from '../components/OffreCard.astro';
   const canvas = document.getElementById('stars-canvas') as HTMLCanvasElement;
   if (canvas) {
     const ctx = canvas.getContext('2d')!;
-    let stars: {x:number, y:number, r:number, speed:number, opacity:number, dir:number}[] = [];
+    type Star = { x:number; y:number; r:number; R:number; G:number; B:number; op:number; maxOp:number; minOp:number; tw:number; dir:number; dx:number; dy:number; };
+    let stars: Star[] = [];
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -714,14 +716,35 @@ import OffreCard from '../components/OffreCard.astro';
 
     const init = () => {
       stars = [];
-      for (let i = 0; i < 120; i++) {
+      const total = Math.max(500, Math.floor(canvas.width * canvas.height / 1100));
+      for (let i = 0; i < total; i++) {
+        const rand = Math.random();
+        let R: number, G: number, B: number;
+        if (rand < 0.38) { R=255; G=255; B=255; }           // 38% blanc pur
+        else if (rand < 0.68) { R=210; G=228; B=255; }      // 30% bleu très clair
+        else if (rand < 0.86) { R=66;  G=165; B=245; }      // 18% bleu vif
+        else { R=180; G=140; B=255; }                        // 14% mauve — profondeur
+
+        const sz = Math.random();
+        const r = sz < 0.62
+          ? Math.random() * 0.55 + 0.12   // petites (lointaines)
+          : sz < 0.91
+          ? Math.random() * 0.85 + 0.55   // moyennes
+          : Math.random() * 1.4 + 1.15;   // grandes brillantes (rares)
+
+        const minOp = Math.random() * 0.06 + 0.03;
+        const maxOp = Math.random() * 0.55 + 0.30;
+
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: Math.random() * 1.8 + 0.3,
-          speed: Math.random() * 0.3 + 0.05,
-          opacity: Math.random() * 0.6 + 0.2,
+          r, R, G, B,
+          op: Math.random() * (maxOp - minOp) + minOp,
+          maxOp, minOp,
+          tw: Math.random() * 0.006 + 0.0015,
           dir: Math.random() > 0.5 ? 1 : -1,
+          dx: (Math.random() - 0.5) * 0.045,
+          dy: -(Math.random() * 0.09 + 0.008),
         });
       }
     };
@@ -729,15 +752,29 @@ import OffreCard from '../components/OffreCard.astro';
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       stars.forEach(s => {
+        s.op += s.tw * s.dir;
+        if (s.op >= s.maxOp || s.op <= s.minOp) s.dir *= -1;
+        s.op = Math.max(s.minOp, Math.min(s.maxOp, s.op));
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.y < -4) { s.y = canvas.height + 4; s.x = Math.random() * canvas.width; }
+        if (s.x < -4) s.x = canvas.width + 4;
+        if (s.x > canvas.width + 4) s.x = -4;
+
+        if (s.r > 1.1) {
+          const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4.5);
+          g.addColorStop(0, `rgba(${s.R},${s.G},${s.B},${s.op * 0.35})`);
+          g.addColorStop(1, `rgba(${s.R},${s.G},${s.B},0)`);
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+        }
+
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(66, 165, 245, ${s.opacity})`;
+        ctx.fillStyle = `rgba(${s.R},${s.G},${s.B},${s.op})`;
         ctx.fill();
-        s.y -= s.speed;
-        s.x += s.dir * 0.1;
-        s.opacity += 0.003 * s.dir;
-        if (s.opacity > 0.8 || s.opacity < 0.1) s.dir *= -1;
-        if (s.y < -5) { s.y = canvas.height + 5; s.x = Math.random() * canvas.width; }
       });
       requestAnimationFrame(draw);
     };
