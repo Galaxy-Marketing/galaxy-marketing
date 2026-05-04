@@ -88,15 +88,26 @@ import OffreCard from '../components/OffreCard.astro';
           <div class="float-b absolute top-4 right-0 w-60 rounded-2xl p-5 shadow-2xl" style="background:white; border:1px solid rgba(0,0,0,0.08);">
             <!-- Header Google Maps -->
             <div class="flex items-center gap-2.5 mb-3">
-              <!-- Logo Google Maps pin -->
-              <div class="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:#EA4335;">
-                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="white">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+              <!-- Logo Google Maps 4 couleurs -->
+              <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-9 h-9" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <clipPath id="maps-pin">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    </clipPath>
+                  </defs>
+                  <g clip-path="url(#maps-pin)">
+                    <rect x="0" y="0" width="12" height="9" fill="#4285F4"/>
+                    <rect x="12" y="0" width="12" height="9" fill="#EA4335"/>
+                    <rect x="0" y="9" width="12" height="15" fill="#34A853"/>
+                    <rect x="12" y="9" width="12" height="15" fill="#FBBC05"/>
+                  </g>
+                  <circle cx="12" cy="9" r="3" fill="white"/>
                 </svg>
               </div>
               <div>
-                <p class="text-gray-900 font-bold text-xs leading-tight">Votre entreprise</p>
-                <p class="text-gray-400 text-xs">Visible sur Google Maps</p>
+                <p class="text-gray-900 font-bold text-sm leading-tight">Votre entreprise</p>
+                <p class="text-gray-500 text-xs">Visible sur Google Maps</p>
               </div>
             </div>
             <!-- Étoiles animées -->
@@ -138,37 +149,31 @@ import OffreCard from '../components/OffreCard.astro';
           <!-- Card 3 — Identité visuelle (bas centre) — carte de visite réaliste -->
           <div class="float-c absolute bottom-0 left-1/2 -translate-x-1/2 w-64 rounded-2xl p-4 shadow-2xl" style="background:rgba(92,53,176,0.3); border:1px solid rgba(92,53,176,0.45); backdrop-filter:blur(16px);">
             <p class="text-white font-bold text-sm mb-3">Identité visuelle</p>
-            <!-- Carte de visite réaliste -->
-            <div class="rounded-xl shadow-xl overflow-hidden" style="background:linear-gradient(135deg,#0A0F2C 0%,#1A237E 55%,#1565C0 100%);">
+            <!-- Carte de visite noire & or -->
+            <div class="rounded-xl shadow-xl overflow-hidden" style="background:#0F0F0F; border:1px solid rgba(245,158,11,0.25);">
               <div class="p-4">
-                <!-- Logo + nom agence -->
-                <div class="flex items-center gap-2 mb-4">
-                  <img src="/logo-icon.png" alt="" class="h-7 w-7 object-contain flex-shrink-0" />
-                  <div>
-                    <p class="text-white font-bold text-xs leading-tight">Galaxy Marketing</p>
-                    <p class="text-xs" style="color:rgba(255,255,255,0.45);">Agence digitale</p>
-                  </div>
+                <!-- Barre or en haut -->
+                <div class="flex items-center gap-1.5 mb-3">
+                  <div class="h-0.5 w-6 rounded-full" style="background:#F59E0B;"></div>
+                  <div class="h-0.5 flex-1 rounded-full" style="background:rgba(255,255,255,0.08);"></div>
                 </div>
-                <!-- Séparateur déco -->
-                <div class="flex gap-0.5 mb-4">
-                  <div class="h-px flex-1 rounded-full" style="background:#42A5F5;"></div>
-                  <div class="h-px w-3 rounded-full" style="background:#5C35B0;"></div>
+                <!-- Logo + agence -->
+                <div class="flex items-center gap-2 mb-3">
+                  <img src="/logo-icon.png" alt="" class="h-6 w-6 object-contain flex-shrink-0" />
+                  <p class="text-white font-bold text-xs tracking-wide">Galaxy Marketing</p>
                 </div>
-                <!-- Infos client -->
+                <!-- Ligne séparatrice or -->
+                <div class="h-px mb-3" style="background:linear-gradient(90deg, rgba(245,158,11,0.6), transparent);"></div>
+                <!-- Nom + infos -->
                 <div>
-                  <p class="text-white font-semibold text-sm leading-tight">Jean Dupont</p>
-                  <p class="text-xs mt-0.5" style="color:#42A5F5;">Gérant · Mon Entreprise</p>
-                  <p class="text-xs mt-1.5" style="color:rgba(255,255,255,0.4);">contact@monentreprise.fr</p>
-                  <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4);">07 59 70 17 30</p>
+                  <p class="font-bold text-sm leading-tight" style="color:#F59E0B;">Jean Dupont</p>
+                  <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.5);">Gérant · Mon Entreprise</p>
+                  <p class="text-xs mt-2" style="color:rgba(255,255,255,0.35);">contact@monentreprise.fr</p>
+                  <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.35);">07 59 70 17 30</p>
                 </div>
               </div>
-              <!-- Bande couleur bas -->
-              <div class="flex h-1.5">
-                <div class="flex-1" style="background:#1565C0;"></div>
-                <div class="flex-1" style="background:#42A5F5;"></div>
-                <div class="flex-1" style="background:#5C35B0;"></div>
-                <div class="flex-1" style="background:#1A237E;"></div>
-              </div>
+              <!-- Bande or en bas -->
+              <div class="h-1" style="background:linear-gradient(90deg,#B45309,#F59E0B,#FBBF24,#F59E0B,#B45309);"></div>
             </div>
             <!-- Palette + label -->
             <div class="flex items-center justify-between mt-3">
