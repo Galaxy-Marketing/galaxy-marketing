@@ -30,12 +30,45 @@ html {
   transform: translateY(0);
 }
 
-/* Stagger delays pour animations en cascade */
+/* Stagger delays pour animations au scroll */
 .delay-100 { transition-delay: 0.1s !important; }
 .delay-200 { transition-delay: 0.2s !important; }
 .delay-300 { transition-delay: 0.3s !important; }
 .delay-400 { transition-delay: 0.4s !important; }
 .delay-500 { transition-delay: 0.5s !important; }
+
+/* Hero — animation d'entrée au chargement */
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-animate {
+  opacity: 0;
+  animation: heroSlideUp 0.8s ease forwards;
+}
+.hero-animate-1 { animation-delay: 0.15s; }
+.hero-animate-2 { animation-delay: 0.35s; }
+.hero-animate-3 { animation-delay: 0.55s; }
+.hero-animate-4 { animation-delay: 0.75s; }
+.hero-animate-5 { animation-delay: 0.95s; }
+.hero-animate-6 { animation-delay: 1.15s; }
+
+/* Cartes flottantes hero */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(-6px); }
+  50%       { transform: translateY(8px); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(-10px); }
+  50%       { transform: translateY(4px); }
+}
+.float-a { animation: floatA 5s ease-in-out infinite; }
+.float-b { animation: floatB 6.5s ease-in-out infinite; animation-delay: 1.2s; }
+.float-c { animation: floatC 4.8s ease-in-out infinite; animation-delay: 2.4s; }
 
 /* Étoiles flottantes dans le hero */
 .stars-container {
