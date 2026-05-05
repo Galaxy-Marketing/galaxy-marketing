@@ -622,7 +622,7 @@ import OffreCard from '../components/OffreCard.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Avis 1 -->
-        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm card-hover fade-in-up">
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm card-hover fade-in-up flex flex-col">
           <div class="flex gap-1 mb-5">
             {[1,2,3,4,5].map(() => (
               <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -633,7 +633,7 @@ import OffreCard from '../components/OffreCard.astro';
           <p class="text-gray-600 leading-relaxed mb-6 italic text-lg">
             "Je ne savais pas du tout par où commencer pour ma présence en ligne. Galaxy Marketing a tout géré, du site à la fiche Google. Le résultat est vraiment professionnel et j'ai déjà reçu de nouveaux clients grâce à ça."
           </p>
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3 mt-auto">
             <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background:#1565C0;">S</div>
             <div>
               <p class="font-semibold text-gm-marine">Sarah M.</p>
@@ -643,7 +643,7 @@ import OffreCard from '../components/OffreCard.astro';
         </div>
 
         <!-- Avis 2 — carte bleue marine -->
-        <div class="rounded-2xl p-8 card-hover fade-in-up" style="background:#1A237E;">
+        <div class="rounded-2xl p-8 card-hover fade-in-up flex flex-col" style="background:#1A237E;">
           <div class="flex gap-1 mb-5">
             {[1,2,3,4,5].map(() => (
               <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
@@ -654,7 +654,7 @@ import OffreCard from '../components/OffreCard.astro';
           <p class="leading-relaxed mb-6 italic text-lg" style="color:rgba(255,255,255,0.85);">
             "Super à l'écoute, réactif et le rendu est vraiment pro. Mon logo et mon identité visuelle donnent exactement l'image que je voulais projeter. Je recommande sans hésiter."
           </p>
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3 mt-auto">
             <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background:rgba(255,255,255,0.15);">M</div>
             <div>
               <p class="font-semibold text-white">Maxime B.</p>
