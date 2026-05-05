@@ -270,8 +270,9 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        NOS SERVICES — ce qu'on fait
        ============================ -->
-  <section class="py-24" style="background:#080F2C;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-24 relative overflow-hidden" style="background:#080F2C;">
+    <canvas id="services-stars-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;" aria-hidden="true"></canvas>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="z-index:1;">
       <div class="text-center mb-16 fade-in-up">
         <span class="text-sm font-semibold uppercase tracking-widest" style="color:#42A5F5;">Ce qu'on fait</span>
         <h2 class="text-4xl font-extrabold text-white mt-2 mb-3">Nos services</h2>
@@ -839,7 +840,83 @@ import OffreCard from '../components/OffreCard.astro';
     init();
     draw();
   }
+</script>
 
+<!-- Script étoiles section services -->
+<script>
+  const svc = document.getElementById('services-stars-canvas') as HTMLCanvasElement;
+  if (svc) {
+    const ctx2 = svc.getContext('2d')!;
+    type Star2 = { x:number; y:number; r:number; R:number; G:number; B:number; op:number; maxOp:number; minOp:number; tw:number; dir:number; };
+    let stars2: Star2[] = [];
+
+    const resize2 = () => { svc.width = svc.offsetWidth; svc.height = svc.offsetHeight; };
+
+    const init2 = () => {
+      stars2 = [];
+      const total = Math.max(80, Math.floor(svc.width * svc.height / 5500));
+      for (let i = 0; i < total; i++) {
+        const rand = Math.random();
+        let R: number, G: number, B: number;
+        if (rand < 0.45) { R=255; G=255; B=255; }
+        else if (rand < 0.78) { R=210; G=228; B=255; }
+        else { R=66; G=165; B=245; }
+
+        const sz = Math.random();
+        const r = sz < 0.65
+          ? Math.random() * 0.45 + 0.1
+          : sz < 0.92
+          ? Math.random() * 0.7 + 0.45
+          : Math.random() * 1.1 + 0.9;
+
+        const minOp = Math.random() * 0.04 + 0.02;
+        const maxOp = Math.random() * 0.35 + 0.15;
+
+        stars2.push({
+          x: Math.random() * svc.width,
+          y: Math.random() * svc.height,
+          r, R, G, B,
+          op: Math.random() * (maxOp - minOp) + minOp,
+          maxOp, minOp,
+          tw: Math.random() * 0.004 + 0.001,
+          dir: Math.random() > 0.5 ? 1 : -1,
+        });
+      }
+    };
+
+    const draw2 = () => {
+      ctx2.clearRect(0, 0, svc.width, svc.height);
+      stars2.forEach(s => {
+        s.op += s.tw * s.dir;
+        if (s.op >= s.maxOp || s.op <= s.minOp) s.dir *= -1;
+        s.op = Math.max(s.minOp, Math.min(s.maxOp, s.op));
+
+        if (s.r > 0.9) {
+          const g = ctx2.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
+          g.addColorStop(0, `rgba(${s.R},${s.G},${s.B},${s.op * 0.3})`);
+          g.addColorStop(1, `rgba(${s.R},${s.G},${s.B},0)`);
+          ctx2.beginPath();
+          ctx2.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2);
+          ctx2.fillStyle = g;
+          ctx2.fill();
+        }
+
+        ctx2.beginPath();
+        ctx2.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx2.fillStyle = `rgba(${s.R},${s.G},${s.B},${s.op})`;
+        ctx2.fill();
+      });
+      requestAnimationFrame(draw2);
+    };
+
+    window.addEventListener('resize', () => { resize2(); init2(); });
+    resize2();
+    init2();
+    draw2();
+  }
+</script>
+
+<script>
   // Animation fiche Google — avis + étoiles
   const ratingEl = document.getElementById('gcard-rating');
   const reviewsEl = document.getElementById('gcard-reviews');
