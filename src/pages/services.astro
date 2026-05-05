@@ -4,79 +4,29 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Nos services — Galaxy Marketing"
-  description="Découvrez nos services : site web vitrine, optimisation fiche Google Business et identité visuelle complète pour entrepreneurs et entreprises locales."
+  description="Découvrez nos services : fiche Google Business, site web vitrine et identité visuelle pour entrepreneurs et entreprises locales."
 >
 
   <!-- En-tête de page -->
   <section class="py-24 bg-gradient-to-br from-blue-50 to-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-5xl font-extrabold text-gm-marine mb-5 fade-in-up">Nos services</h1>
+      <h1 class="text-5xl font-extrabold text-gm-marine mb-3 fade-in-up">Nos services</h1>
+      <p class="text-gm-blue font-medium mb-3 fade-in-up">Par où commencer ?</p>
       <p class="text-xl text-gray-500 fade-in-up">
-        Tout ce dont vous avez besoin pour votre présence en ligne.
+        Chaque service répond à un besoin précis. Commencez par celui qui vous manque le plus.
       </p>
     </div>
   </section>
 
   <!-- ============================
-       SERVICE 1 — SITE WEB
+       SERVICE 1 — FICHE GOOGLE
        ============================ -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <!-- Visuel -->
-        <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up">
-          <img
-            src="/service-vitrine.jpg"
-            alt="Création de site web vitrine"
-            class="w-full"
-          />
-        </div>
 
         <!-- Contenu -->
         <div class="fade-in-up">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h2 class="text-3xl font-extrabold text-gm-marine mb-4">Site web vitrine</h2>
-          <p class="text-gray-500 mb-6 leading-relaxed">
-            Un site vitrine professionnel qui représente votre activité et convertit vos visiteurs en clients. Conçu sur mesure, optimisé pour tous les appareils.
-          </p>
-          <ul class="flex flex-col gap-3 mb-8">
-            {[
-              'Site one-page professionnel et moderne',
-              'Design entièrement responsive (mobile & desktop)',
-              'Animations et transitions fluides',
-              'Formulaire de contact intégré',
-              'Déployé en ligne avec votre nom de domaine',
-              'Optimisation SEO de base incluse',
-            ].map((item) => (
-              <li class="flex items-start gap-2.5 text-sm text-gray-600">
-                <svg class="w-5 h-5 text-gm-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <a href="/contact" class="inline-block bg-gm-blue text-white px-7 py-3.5 rounded-xl font-semibold btn-transition hover:bg-gm-indigo">
-            Demander un devis
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SERVICE 2 — FICHE GOOGLE
-       ============================ -->
-  <section class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <!-- Contenu — inversé -->
-        <div class="fade-in-up order-2 lg:order-1">
           <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,7 +35,8 @@ import Layout from '../layouts/Layout.astro';
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
-          <h2 class="text-3xl font-extrabold text-gm-marine mb-4">Fiche Google Business</h2>
+          <h2 class="text-3xl font-extrabold text-gm-marine mb-2">Fiche Google Business</h2>
+          <p class="text-gm-blue font-medium mb-5">Vos clients vous cherchent sur Google. Soyez là quand ils cherchent.</p>
           <p class="text-gray-500 mb-6 leading-relaxed">
             Soyez trouvé par vos clients locaux grâce à une fiche Google entièrement optimisée. Plus de visibilité, plus d'appels, plus de clients.
           </p>
@@ -112,13 +63,61 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Visuel -->
-        <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up order-1 lg:order-2">
-          <img
-            src="/service-google.jpg"
-            alt="Optimisation fiche Google Business"
-            class="w-full"
-          />
+        <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up">
+          <img src="/service-google.jpg" alt="Fiche Google Business optimisée" class="w-full" />
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       SERVICE 2 — SITE WEB VITRINE
+       ============================ -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Visuel -->
+        <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up order-1 lg:order-2">
+          <img src="/service-vitrine.jpg" alt="Création de site web vitrine" class="w-full" />
+        </div>
+
+        <!-- Contenu -->
+        <div class="fade-in-up order-2 lg:order-1">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h2 class="text-3xl font-extrabold text-gm-marine mb-2">Site web vitrine</h2>
+          <p class="text-gm-blue font-medium mb-5">Un lien à partager, une vitrine ouverte 24h/24. Votre site, livré clé en main.</p>
+          <p class="text-gray-500 mb-6 leading-relaxed">
+            Un site vitrine professionnel qui représente votre activité et convertit vos visiteurs en clients. Conçu sur mesure, optimisé pour tous les appareils.
+          </p>
+          <ul class="flex flex-col gap-3 mb-8">
+            {[
+              'Site one-page professionnel et moderne',
+              'Design entièrement responsive (mobile & desktop)',
+              'Animations et transitions fluides',
+              'Formulaire de contact intégré',
+              'Déployé en ligne avec votre nom de domaine',
+              'Optimisation SEO de base incluse',
+            ].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-gray-600">
+                <svg class="w-5 h-5 text-gm-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="inline-block bg-gm-blue text-white px-7 py-3.5 rounded-xl font-semibold btn-transition hover:bg-gm-indigo">
+            Demander un devis
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -129,13 +128,10 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
         <!-- Visuel -->
         <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up">
-          <img
-            src="/service-identite.jpg"
-            alt="Identité visuelle et logo"
-            class="w-full"
-          />
+          <img src="/service-identite.jpg" alt="Identité visuelle et logo" class="w-full" />
         </div>
 
         <!-- Contenu -->
@@ -146,7 +142,8 @@ import Layout from '../layouts/Layout.astro';
                 d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
             </svg>
           </div>
-          <h2 class="text-3xl font-extrabold text-gm-marine mb-4">Identité visuelle</h2>
+          <h2 class="text-3xl font-extrabold text-gm-marine mb-2">Identité visuelle</h2>
+          <p class="text-gm-blue font-medium mb-5">Un logo, des couleurs, une carte. L'image qui reste en tête.</p>
           <p class="text-gray-500 mb-6 leading-relaxed">
             Une image de marque cohérente et professionnelle qui vous distingue et inspire confiance à vos clients dès le premier regard.
           </p>
@@ -171,6 +168,7 @@ import Layout from '../layouts/Layout.astro';
             Demander un devis
           </a>
         </div>
+
       </div>
     </div>
   </section>
