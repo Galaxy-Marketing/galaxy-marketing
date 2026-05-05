@@ -670,6 +670,7 @@ import OffreCard from '../components/OffreCard.astro';
        POURQUOI GALAXY MARKETING
        ============================ -->
   <section class="py-24 relative overflow-hidden" style="background:#0A0F2C;">
+    <canvas id="engagements-stars-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;" aria-hidden="true"></canvas>
     <!-- Halo décoratif -->
     <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none" style="background:radial-gradient(circle, #5C35B0 0%, transparent 70%);"></div>
 
@@ -777,8 +778,9 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        CTA FINAL
        ============================ -->
-  <section class="py-24 gradient-blue">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+  <section class="py-24 gradient-blue relative overflow-hidden">
+    <canvas id="cta-stars-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;" aria-hidden="true"></canvas>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up" style="z-index:1;">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">
         Prêt à booster votre image de marque ?
       </h2>
@@ -1100,4 +1102,43 @@ import OffreCard from '../components/OffreCard.astro';
       requestAnimationFrame(tick);
     }, 1200);
   }
+</script>
+
+<script>
+  function makeStars(id: string, density: number) {
+    const cvs = document.getElementById(id) as HTMLCanvasElement;
+    if (!cvs) return;
+    const ctx = cvs.getContext('2d')!;
+    type S = { x:number; y:number; r:number; op:number; maxOp:number; minOp:number; tw:number; dir:number; };
+    let stars: S[] = [];
+    const resize = () => { cvs.width = cvs.offsetWidth; cvs.height = cvs.offsetHeight; };
+    const init = () => {
+      stars = [];
+      const total = Math.max(20, Math.floor(cvs.width * cvs.height / density));
+      for (let i = 0; i < total; i++) {
+        const sz = Math.random();
+        const r = sz < 0.7 ? Math.random() * 0.35 + 0.1 : Math.random() * 0.55 + 0.3;
+        const minOp = Math.random() * 0.03 + 0.01;
+        const maxOp = Math.random() * 0.18 + 0.06;
+        stars.push({ x: Math.random() * cvs.width, y: Math.random() * cvs.height, r, op: Math.random() * (maxOp - minOp) + minOp, maxOp, minOp, tw: Math.random() * 0.002 + 0.0006, dir: Math.random() > 0.5 ? 1 : -1 });
+      }
+    };
+    const draw = () => {
+      ctx.clearRect(0, 0, cvs.width, cvs.height);
+      stars.forEach(s => {
+        s.op += s.tw * s.dir;
+        if (s.op >= s.maxOp || s.op <= s.minOp) s.dir *= -1;
+        s.op = Math.max(s.minOp, Math.min(s.maxOp, s.op));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.op})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    };
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize(); init(); draw();
+  }
+  makeStars('engagements-stars-canvas', 12000);
+  makeStars('cta-stars-canvas', 14000);
 </script>
