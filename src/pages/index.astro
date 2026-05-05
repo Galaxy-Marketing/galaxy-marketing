@@ -1117,9 +1117,9 @@ import OffreCard from '../components/OffreCard.astro';
       const total = Math.max(20, Math.floor(cvs.width * cvs.height / density));
       for (let i = 0; i < total; i++) {
         const sz = Math.random();
-        const r = sz < 0.7 ? Math.random() * 0.35 + 0.1 : Math.random() * 0.55 + 0.3;
-        const minOp = Math.random() * 0.03 + 0.01;
-        const maxOp = Math.random() * 0.18 + 0.06;
+        const r = sz < 0.65 ? Math.random() * 0.5 + 0.1 : sz < 0.9 ? Math.random() * 0.8 + 0.4 : Math.random() * 1.2 + 0.8;
+        const minOp = Math.random() * 0.06 + 0.03;
+        const maxOp = Math.random() * 0.40 + 0.20;
         stars.push({ x: Math.random() * cvs.width, y: Math.random() * cvs.height, r, op: Math.random() * (maxOp - minOp) + minOp, maxOp, minOp, tw: Math.random() * 0.002 + 0.0006, dir: Math.random() > 0.5 ? 1 : -1 });
       }
     };
@@ -1139,6 +1139,6 @@ import OffreCard from '../components/OffreCard.astro';
     window.addEventListener('resize', () => { resize(); init(); });
     resize(); init(); draw();
   }
-  makeStars('engagements-stars-canvas', 12000);
-  makeStars('cta-stars-canvas', 14000);
+  makeStars('engagements-stars-canvas', 5000);
+  makeStars('cta-stars-canvas', 6000);
 </script>
