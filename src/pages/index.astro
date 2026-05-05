@@ -506,68 +506,54 @@ import OffreCard from '../components/OffreCard.astro';
   </section>
 
   <!-- ============================
-       NOS OFFRES — les packs avec prix
+       NOS OFFRES — tuiles services
        ============================ -->
-  <section id="offres" class="py-24" style="background:#F1F5FF;">
+  <section id="offres" class="py-24" style="background:#F8FAFF;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-6 fade-in-up">
-        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Nos formules</span>
-        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-4">Choisissez votre pack</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">Chaque projet est unique. Devis gratuit et personnalisé sous 48h.</p>
+      <div class="text-center mb-14 fade-in-up">
+        <span class="text-sm font-semibold uppercase tracking-widest" style="color:#1565C0;">Nos offres</span>
+        <h2 class="text-4xl font-extrabold text-gm-marine mt-2 mb-3">Votre présence digitale, sur mesure.</h2>
+        <p class="text-gray-400 text-sm">Devis gratuit et personnalisé sous 48h.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8">
-        <OffreCard
-          name="Essentiel"
-          subtitle="Pour démarrer votre présence locale"
-          features={['Fiche Google optimisée + visuels','3 posts Google planifiés','Carte NFC + QR code','Guide PDF offert']}
-        />
-        <OffreCard
-          name="Pro"
-          subtitle="Pour une présence digitale complète"
-          popular={true}
-          features={["Tout l'Essentiel inclus",'Site web one-page professionnel','Design responsive mobile et desktop','Formulaire de contact intégré','Animations incluses']}
-        />
-        <OffreCard
-          name="Galaxy"
-          subtitle="Pour une image de marque professionnelle"
-          features={['Tout le Pro inclus','Logo + identité visuelle complète','Carte de visite et flyer','Livraison en haute résolution']}
-        />
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-      <p class="text-center text-gray-400 text-sm mb-16 fade-in-up">
-        Tous les tarifs sont établis sur devis, selon votre projet et vos besoins.
-      </p>
-
-      <!-- Options à la carte -->
-      <div class="rounded-2xl p-8 border border-blue-100 fade-in-up" style="background:#F8FAFF;">
-        <div class="text-center mb-8">
-          <h3 class="text-2xl font-bold text-gm-marine mb-2">Options à la carte</h3>
-          <p class="text-gray-500">À ajouter à n'importe quelle offre selon vos besoins.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
-            <div>
-              <p class="font-semibold text-gm-marine text-sm">Pack 12 visuels réseaux sociaux</p>
-              <p class="text-gray-400 text-xs mt-0.5">Posts personnalisés à vos couleurs</p>
-            </div>
-            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
+        <!-- Tuile 1 — Fiche Google -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md fade-in-up delay-100 flex flex-col">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="/service-google.jpg" alt="Fiche Google Business" class="w-full h-full object-cover object-top" />
           </div>
-          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
-            <div>
-              <p class="font-semibold text-gm-marine text-sm">Chatbot sur votre site</p>
-              <p class="text-gray-400 text-xs mt-0.5">Assistant virtuel 24h/24</p>
-            </div>
-            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
-          </div>
-          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-center justify-between gap-4">
-            <div>
-              <p class="font-semibold text-gm-marine text-sm">Système de réservation en ligne</p>
-              <p class="text-gray-400 text-xs mt-0.5">Réservations depuis votre site</p>
-            </div>
-            <a href="/contact" class="text-xs font-bold px-3 py-2 rounded-lg text-white flex-shrink-0 btn-transition" style="background:#1565C0;">Devis</a>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="text-xl font-extrabold text-gm-marine mb-2">Fiche Google Business</h3>
+            <p class="text-gray-500 leading-relaxed mb-6 flex-1">Soyez trouvé par vos clients locaux au moment où ils vous cherchent.</p>
+            <a href="/contact" class="block text-center text-white px-6 py-3 rounded-xl font-semibold btn-transition" style="background:#1565C0;" onmouseover="this.style.background='#5C35B0'" onmouseout="this.style.background='#1565C0'">Demander un devis</a>
           </div>
         </div>
+
+        <!-- Tuile 2 — Site web vitrine -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md fade-in-up delay-200 flex flex-col">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="/service-vitrine.jpg" alt="Site web vitrine" class="w-full h-full object-cover object-top" />
+          </div>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="text-xl font-extrabold text-gm-marine mb-2">Site web vitrine</h3>
+            <p class="text-gray-500 leading-relaxed mb-6 flex-1">Une vitrine professionnelle en ligne, disponible 24h/24 pour convertir vos visiteurs en clients.</p>
+            <a href="/contact" class="block text-center text-white px-6 py-3 rounded-xl font-semibold btn-transition" style="background:#1565C0;" onmouseover="this.style.background='#5C35B0'" onmouseout="this.style.background='#1565C0'">Demander un devis</a>
+          </div>
+        </div>
+
+        <!-- Tuile 3 — Identité visuelle -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md fade-in-up delay-300 flex flex-col">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="/service-identite.jpg" alt="Identité visuelle" class="w-full h-full object-cover object-top" />
+          </div>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="text-xl font-extrabold text-gm-marine mb-2">Identité visuelle</h3>
+            <p class="text-gray-500 leading-relaxed mb-6 flex-1">Un logo, des couleurs, une carte de visite. L'image qui reste en tête et inspire confiance.</p>
+            <a href="/contact" class="block text-center text-white px-6 py-3 rounded-xl font-semibold btn-transition" style="background:#1565C0;" onmouseover="this.style.background='#5C35B0'" onmouseout="this.style.background='#1565C0'">Demander un devis</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
