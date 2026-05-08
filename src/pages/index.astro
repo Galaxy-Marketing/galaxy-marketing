@@ -270,8 +270,9 @@ import OffreCard from '../components/OffreCard.astro';
   <!-- ============================
        NOS SERVICES — ce qu'on fait
        ============================ -->
-  <section class="py-24" style="background:linear-gradient(180deg, #1A2E6E 0%, #0D1845 50%, #080F2C 100%);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-24 relative overflow-hidden" style="background:linear-gradient(180deg, #1A2E6E 0%, #0D1845 50%, #080F2C 100%);">
+    <canvas id="services-stars-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index:0;" aria-hidden="true"></canvas>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="z-index:1;">
       <div class="text-center mb-14 fade-in-up">
         <span class="text-sm font-semibold uppercase tracking-widest" style="color:#42A5F5;">Ce qu'on fait</span>
         <h2 class="text-4xl font-extrabold text-white mt-2">Nos services</h2>
@@ -825,7 +826,7 @@ import OffreCard from '../components/OffreCard.astro';
 
     const init2 = () => {
       stars2 = [];
-      const total = Math.max(80, Math.floor(svc.width * svc.height / 5500));
+      const total = Math.max(15, Math.floor(svc.width * svc.height / 40000));
       for (let i = 0; i < total; i++) {
         const rand = Math.random();
         let R: number, G: number, B: number;
@@ -840,8 +841,8 @@ import OffreCard from '../components/OffreCard.astro';
           ? Math.random() * 0.7 + 0.45
           : Math.random() * 1.1 + 0.9;
 
-        const minOp = Math.random() * 0.04 + 0.02;
-        const maxOp = Math.random() * 0.35 + 0.15;
+        const minOp = Math.random() * 0.02 + 0.01;
+        const maxOp = Math.random() * 0.18 + 0.08;
 
         stars2.push({
           x: Math.random() * svc.width,
